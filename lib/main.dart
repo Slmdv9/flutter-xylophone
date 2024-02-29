@@ -15,12 +15,13 @@ class XylophoneApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
             child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: const [
             XylophoneKey(keyNumber: 1, color: Colors.red),
             XylophoneKey(keyNumber: 2, color: Colors.orange),
             XylophoneKey(keyNumber: 3, color: Colors.yellow),
             XylophoneKey(keyNumber: 4, color: Colors.green),
-            XylophoneKey(keyNumber: 5, color: Colors.grey),
+            XylophoneKey(keyNumber: 5, color: Colors.teal),
             XylophoneKey(keyNumber: 6, color: Colors.blue),
             XylophoneKey(keyNumber: 7, color: Colors.purple)
           ],
@@ -42,7 +43,10 @@ class XylophoneKey extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TextButton(
-        child: Container(color: _color),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(_color),
+        ),
+        child: Container(),
         onPressed: () async {
           AudioCache.instance = AudioCache(prefix: '');
           final player = AudioPlayer();
